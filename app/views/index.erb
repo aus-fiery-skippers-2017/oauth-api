@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>OAuth and Twitter</h1>
+
+  <%
+    # In our real-world application, this is not what we want. Instead, we should
+    # be checking to see if there is currently a user logged-in, and if there is,
+    # we should show her a form that will allow her to send a tweet. If there is no
+    # user logged-in, we should show the sign-in button.
+  %>
+  <% if @access_token %>
+    <div>
+      <p>
+        <strong>token:</strong> <%= @access_token.token %><br>
+        <strong>secret:</strong> <%= @access_token.secret %><br>
+      </p>
+      <p>
+        <button><a href="/sign_out">Sign Out</a></button>
+      </p>
+    </div>
+  <% else %>
+    <form action="/sign_in" method="get">
+      <input type="submit" value="Sign In with Twitter" />
+    </form>
+  <% end %>
+
+</div>
